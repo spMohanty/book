@@ -1,0 +1,49 @@
+
+<center>
+<div class="box">
+<%= image_tag(@face_1.image,:width => "400px", :id=>"FACE_1", :face_id=>@face_1.id, :class=>"face") %>
+<br/>
+Name :: <%= @face_1.name %>
+<br/>
+Rating :: <%= @face_1.elo_rating %>
+<br/>
+Won :: <%= @face_1.won %>
+<br/>
+Lost :: <%= @face_1.lost %>
+</div>
+<div class="box">
+<%= image_tag(@face_2.image,:width => "400px", :id=>"FACE_2", :face_id=>@face_2.id, :class=>"face") %>
+<br/>
+Name :: <%= @face_2.name %>
+<br/>
+Rating :: <%= @face_2.elo_rating %>
+<br/>
+Won :: <%= @face_2.won %>
+<br/>
+Lost :: <%= @face_2.lost %>
+</div>
+</center>
+
+
+<%= form_tag do %>
+<%= hidden_field_tag("face1", @face_1.id) %>
+<%= hidden_field_tag("face2", @face_2.id) %>
+<%= hidden_field_tag("selection") %>
+<% end %>
+
+<script type='text/javascript'>
+$(document).ready(function(){
+	$(".face").click(function(){
+		$("#selection").value=$(this).attr("face_id");
+		$("form").submit();
+	});
+});
+</script>
+<style type='text/css'>
+	.face{
+		padding-left : 100px;
+	}
+	.box {
+		float : left;
+	}
+</style>

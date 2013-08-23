@@ -1,0 +1,27 @@
+<h1>Ranklist</h1>
+<% count = 1 %>
+<table>
+  <thead>
+    <tr>
+      <th>Rank </th>
+      <th>Name</th>
+      <th>Image</th>
+      <th>Elo rating</th>
+      <th>Won</th>
+      <th>Lost</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @result.each do |face| %>
+      <tr>
+      	<td> <%= count %> <% count+=1 %>
+        <td><%= face.name %></td>
+        <td><%= image_tag(face.image, :width => "400px") %></td>
+        <td><%= face.elo_rating %></td>
+        <td><%= face.won %></td>
+        <td><%= face.lost %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
